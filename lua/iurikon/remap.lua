@@ -1,3 +1,8 @@
+-- Function to check if GitHub Copilot's suggestions are available
+local function has_copilot_suggestions()
+  return vim.v.suggest_enable_popup == 1 and vim.v.suggest_selection ~= -1
+end
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -17,20 +22,21 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':bfirst<CR>', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<C-k>', ':blast<CR>', { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
+  require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
+  require("vim-with-me").StopVimWithMe()
 end)
 
 -- greatest remap ever
+
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : yank to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Emacs user keybinds lmao
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -51,11 +57,13 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/the
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+  vim.cmd("so")
 end)
 
 -- Key mappings for netrw
 vim.api.nvim_set_keymap('n', '<leader>ne', ':Lexplore<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>nf', ':Rexplore<CR>', { noremap = true, silent = true })
 
-
+-- Copilot keybinds
+vim.cmd(
+[[inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : (has_copilot_suggestions() ? "\<Plug>(copilot_next)" : "\<Tab>")]])
