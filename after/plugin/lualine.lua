@@ -7,6 +7,7 @@ require('lualine').setup {
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
       'packer',
+      'NvimTree',
       statusline = {},
       winbar = {},
     },
@@ -20,5 +21,3 @@ require('lualine').setup {
     }
   },
 }
-
-vim.opt.laststatus = 3
