@@ -1,0 +1,18 @@
+require("iurikon.remap")
+require("iurikon.set")
+
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.9
+end
+
+vim.o.laststatus = 3
+
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g loaded_netrwSettings = 1
+vim.g loaded_netrwFileHandlers = 1
+vim.g loaded_netrw_gitignore = 1
+
+vim.cmd[[
+  autocmd VimEnter * :Neotree toggle
+]]
