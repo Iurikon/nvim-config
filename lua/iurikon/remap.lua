@@ -52,15 +52,12 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
-
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
--- Toggle Neotree with Ctrl+N
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle', { noremap = true, silent = true })
+-- Toggle NvimTree with Ctrl+N
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- Switch between Neotree and current file with Ctrl+H and Ctrl+L
 vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', { noremap = true, silent = true })
@@ -78,5 +75,10 @@ vim.api.nvim_set_keymap('n', '<leader>ne', ':Lexplore<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>nf', ':Rexplore<CR>', { noremap = true, silent = true })
 
 -- Copilot keybinds
-vim.cmd(
-[[inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : (has_copilot_suggestions() ? "\<Plug>(copilot_next)" : "\<Tab>")]])
+
+-- go keybinds
+vim.keymap.set(
+    "n",
+    "<leader>ee",
+    "oif err != nil {<CR>}<Esc>0return err<Esc>"
+)
