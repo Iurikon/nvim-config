@@ -4,7 +4,6 @@ local function has_copilot_suggestions()
 end
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -20,13 +19,6 @@ vim.api.nvim_set_keymap('n', '<C-h>', ':bprevious<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-j>', ':bfirst<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-k>', ':blast<CR>', { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>vwm", function()
-  require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-  require("vim-with-me").StopVimWithMe()
-end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -65,7 +57,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', { noremap = true, silent 
 
 -- Switch between open files using Tab and Shift + Tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>Tab', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
 -- Close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, silent = true })
@@ -74,11 +66,9 @@ vim.api.nvim_set_keymap('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>ne', ':Lexplore<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>nf', ':Rexplore<CR>', { noremap = true, silent = true })
 
--- Copilot keybinds
-
 -- go keybinds
 vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>0return err<Esc>"
+  "n",
+  "<leader>ee",
+  "oif err != nil {<CR>}<Esc>0return err<Esc>"
 )

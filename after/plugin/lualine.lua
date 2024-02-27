@@ -8,6 +8,7 @@ require('lualine').setup {
     disabled_filetypes = {
       'packer',
       'NvimTree',
+      'undotree',
       statusline = {},
       winbar = {},
     },

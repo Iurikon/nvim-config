@@ -1,7 +1,7 @@
 -- This file can be loaded by ca>lling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -24,10 +24,10 @@ return require('packer').startup(function(use)
   use { 'rrethy/vim-hexokinase' }
   use { 'tpope/vim-fugitive' }
   use { 'goolord/alpha-nvim' }
-  use { 'nvim-tree/nvim-web-devicons' }
   use { 'lukas-reineke/indent-blankline.nvim' }
   use { 'lewis6991/gitsigns.nvim' }
   use { 'famiu/bufdelete.nvim' }
+  use { 'github/copilot.vim' }
   use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
   use {
     'nvim-lualine/lualine.nvim',
