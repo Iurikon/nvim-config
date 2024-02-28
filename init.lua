@@ -1,4 +1,7 @@
-require("iurikon")
+require("iurikon.packer")
+require("iurikon.set")
+require("iurikon.remap")
+require("iurikon.init")
 
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.9
