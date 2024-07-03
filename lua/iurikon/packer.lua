@@ -23,9 +23,9 @@ return require('packer').startup(function(use)
   use { 'mbbill/undotree' }
   use { 'rrethy/vim-hexokinase' }
   use { 'tpope/vim-fugitive' }
+  use { 'lewis6991/gitsigns.nvim' }
   use { 'goolord/alpha-nvim' }
   use { 'lukas-reineke/indent-blankline.nvim' }
-  use { 'lewis6991/gitsigns.nvim' }
   use { 'famiu/bufdelete.nvim' }
   use { 'github/copilot.vim' }
   use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }

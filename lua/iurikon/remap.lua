@@ -66,6 +66,9 @@ vim.api.nvim_set_keymap('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>ne', ':Lexplore<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>nf', ':Rexplore<CR>', { noremap = true, silent = true })
 
+-- Map Ctrl+J to accept Copilot suggestion
+vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 -- go keybinds
 vim.keymap.set(
   "n",
