@@ -48,6 +48,11 @@ vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
+-- ToggleTerm with leader+tt
+vim.keymap.set('n', '<leader>tt', function()
+  vim.cmd("ToggleTerm")
+end)
+
 -- Toggle NvimTree with Ctrl+N
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
