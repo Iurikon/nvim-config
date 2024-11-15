@@ -3,27 +3,26 @@ local cmp_format = require('lsp-zero').cmp_format({details = true})
 local lsp = require('lsp-zero')
 
 cmp.setup({
-  sources = {
-    { name = "nvim-lsp" },
-    { name = "luasnip" },
-    { name = "nvim-lua" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-  snippet = {
+  sources = ({
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'nvim-lua' },
+    { name = 'buffer' },
+    { name = 'path' },
+  }),
+  snippet = ({
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end
-  },
-  window = {
+  }),
+  window = ({
     completion = cmp.config.window.bordered(),
-    documentation = {
+    documentation = ({
       border = "rounded",
       winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopePromptBorder",
       max_width = 80,
       max_height = 30,
-    },
-  },
+    }),
+  }),
   formatting = cmp_format,
 })
 
