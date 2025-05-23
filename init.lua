@@ -1,7 +1,20 @@
-require("iurikon.packer")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("iurikon.plugins")
+
 require("iurikon.set")
 require("iurikon.remap")
-require("iurikon.init")
 
 if vim.g.neovide then
   vim.g.neovide_transparency = 0.9
