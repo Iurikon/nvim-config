@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':bfirst<CR>', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<C-k>', ':blast<CR>', { noremap = true, silent = true })
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>P", [["_dP]])
 
 -- next greatest remap ever : yank to clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

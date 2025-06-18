@@ -23,16 +23,6 @@ return {
   { 'mbbill/undotree' },
   { 'rrethy/vim-hexokinase' },
   { 'tpope/vim-fugitive' },
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup({
-        -- You can try uncommenting the line below if the error persists after updating
-        -- and restarting. This makes operations synchronous, which might avoid the error.
-        async = false,
-      })
-    end,
-  },
   { 'goolord/alpha-nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'famiu/bufdelete.nvim' },
