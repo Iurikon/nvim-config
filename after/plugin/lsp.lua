@@ -28,6 +28,12 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn>", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-z>", function() vim.lsp.buf.signature_help() end, opts)
+  
+  -- Additional diagnostic mappings for better error visibility
+  vim.keymap.set("n", "<leader>dl", function() vim.diagnostic.setloclist() end, opts) -- Show all diagnostics in location list
+  vim.keymap.set("n", "<leader>dq", function() vim.diagnostic.setqflist() end, opts) -- Show all diagnostics in quickfix list
+  vim.keymap.set("n", "<leader>di", function() vim.diagnostic.show() end, opts) -- Show diagnostics for current line
+  vim.keymap.set("n", "<leader>dh", function() vim.diagnostic.hide() end, opts) -- Hide diagnostics
 end)
 
 lsp.setup()

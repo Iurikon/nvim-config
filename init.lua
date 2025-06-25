@@ -11,6 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Set mapleader before loading plugins
+vim.g.mapleader = " "
+
 require("lazy").setup("iurikon.plugins")
 
 require("iurikon.set")
@@ -24,4 +27,3 @@ end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.o.laststatus = 2

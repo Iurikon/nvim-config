@@ -36,3 +36,25 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+-- LSP Diagnostic Configuration
+vim.diagnostic.config({
+  virtual_text = true, -- Show error text inline
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+    },
+  },
+  underline = true, -- Underline errors
+  update_in_insert = false, -- Don't update diagnostics while typing
+  severity_sort = true, -- Sort diagnostics by severity
+  float = {
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
