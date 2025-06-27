@@ -5,6 +5,7 @@ lsp.setup()
 
 lsp.ensure_installed({
   'tsserver',
+  'clangd',
   'eslint',
   'sumneko_lua',
   'rust_analyzer',
@@ -14,6 +15,16 @@ lsp.ensure_installed({
 lsp.set_preferences({
   sign_icons = {}
 })
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = "rounded",
+    max_width = 80,
+    max_height = 30,
+    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopePromptBorder",
+  }
+)
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
@@ -28,7 +39,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn>", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-z>", function() vim.lsp.buf.signature_help() end, opts)
-  
+
   -- Additional diagnostic mappings for better error visibility
   vim.keymap.set("n", "<leader>dl", function() vim.diagnostic.setloclist() end, opts) -- Show all diagnostics in location list
   vim.keymap.set("n", "<leader>dq", function() vim.diagnostic.setqflist() end, opts) -- Show all diagnostics in quickfix list

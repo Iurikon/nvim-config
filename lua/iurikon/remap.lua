@@ -31,15 +31,11 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Emacs user keybinds lmao
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<Esc>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
-vim.keymap.set("n", "<C-K>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-J>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -83,12 +79,11 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = 
 -- Close the current buffer
 vim.api.nvim_set_keymap('n', '<leader>bd', ':Bdelete<CR>', { noremap = true, silent = true })
 
--- Key mappings for netrw
-vim.api.nvim_set_keymap('n', '<leader>ne', ':Lexplore<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>nf', ':Rexplore<CR>', { noremap = true, silent = true })
-
 -- Map Ctrl+J to accept Copilot suggestion
 vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-q>', 'copilot#Dismiss()', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-]>', 'copilot#Next()', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-[>', 'copilot#Previous()', { silent = true, expr = true })
 
 -- go keybinds
 vim.keymap.set(
