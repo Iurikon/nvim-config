@@ -14,9 +14,9 @@ return {
   { 'folke/which-key.nvim' },
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
   },
-  { 'nvim-treesitter/playground' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-telescope/telescope.nvim', tag = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'ThePrimeagen/harpoon' },
@@ -55,11 +55,50 @@ return {
   { 'rmagatti/auto-session' },
 
   {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'main',
+    'olimorris/codecompanion.nvim',
     dependencies = {
-      { 'github/copilot.vim' },
       { 'nvim-lua/plenary.nvim' },
+      { 'nvim-treesitter/nvim-treesitter' },
+    },
+  },
+
+  {
+    'johnseth97/codex.nvim',
+    cmd = { 'Codex', 'CodexToggle' },
+    keys = {
+      {
+        '<leader>cx',
+        function()
+          require('codex').toggle()
+        end,
+        desc = 'Toggle Codex panel',
+        mode = { 'n', 't' },
+      },
+    },
+    init = function()
+      -- Strip editor chrome from the Codex panel so it looks like a chat sidebar.
+      vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter', 'TermOpen' }, {
+        group = vim.api.nvim_create_augroup('CodexPanel', { clear = true }),
+        callback = function(args)
+          if vim.bo[args.buf].filetype ~= 'codex' then
+            return
+          end
+          vim.wo.number = false
+          vim.wo.relativenumber = false
+          vim.wo.signcolumn = 'no'
+          vim.wo.winfixwidth = true -- keep the dock width when other splits open
+        end,
+      })
+    end,
+    opts = {
+      keymaps = {
+        toggle = nil,
+        quit = '<C-g>',
+      },
+      panel = true, -- dock to the right in a vertical split instead of floating
+      width = 0.35, -- panel width as a fraction of the editor columns
+      autoinstall = true,
+      use_buffer = false,
     },
   },
 

@@ -17,6 +17,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = true
+vim.opt.splitright = true -- docked panels (Copilot Chat) open on the right
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = get_home_directory() .. "/.nvim/undodir"
